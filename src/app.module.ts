@@ -5,9 +5,11 @@ import { CustomConfigModule } from './config/config.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PostgreSQLConfig } from './config/database/orm.config';
 import { AuthModule } from './module/core/auth/auth.module';
+import { ChatModule } from './module/feature/chat/chat.module';
+import { EmbeddingsModule } from './module/feature/embeddings/embeddings.module';
 
 @Module({
-  imports: [CustomConfigModule, TypeOrmModule.forRootAsync(PostgreSQLConfig), AuthModule],
+  imports: [CustomConfigModule, TypeOrmModule.forRootAsync(PostgreSQLConfig), AuthModule, ChatModule, EmbeddingsModule],
   controllers: [AppController],
   providers: [AppService],
 })

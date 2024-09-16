@@ -6,4 +6,5 @@ export default registerAs('app', () => ({
   port: parseInt(process.env.PORT, 10) || 3000,
   userSecret: process.env.USER_SECRET_KEY,
   userExpiresIn: process.env.USER_EXPIRES_IN,
+  openAIApiKey: process.env.OPENAI_API_KEY,
 }));
