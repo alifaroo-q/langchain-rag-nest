@@ -1,0 +1,8 @@
+export enum TEMPLATES {
+  SYSTEM_TEMPLATE = `Answer the user's questions based on the below context.
+If the context doesn't contain any relevant information to the question, don't make something up and just say "I don't know":
+
+<context>
+{context}
+</context>`,
+}

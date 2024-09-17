@@ -1,5 +1,7 @@
 import {
+  Body,
   Controller,
+  Get,
   ParseFilePipe,
   Post,
   UploadedFile,
@@ -9,6 +11,7 @@ import { ChatService } from './chat.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { MulterFileUpload } from 'src/utils/app/file-upload.multer';
 import { UPLOAD_LOCATION } from 'src/constant/common.constant';
+import { QueryDto } from './dto/query.dto';
 
 @Controller('chat')
 export class ChatController {
@@ -34,5 +37,15 @@ export class ChatController {
     file: Express.Multer.File,
   ) {
     return this.chatService.uploadFileAndCreateEmbeddings(file);
+  }
+
+  @Get('collections')
+  async getAllCollections() {
+    return this.chatService.getAllEmbeddingCollections();
+  }
+
+  @Get('/query')
+  async ragQuery(@Body() query: QueryDto) {
+    return this.chatService.ragQuery(query);
   }
 }
